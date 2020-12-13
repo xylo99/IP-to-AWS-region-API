@@ -13,3 +13,12 @@ class ModelTests(TestCase):
 
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(pw))
+
+    def test_if_super_user_created(self):
+        user = get_user_model().objects.create_user(
+            'test@test.com',
+            'passmeby234'
+        )
+
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
