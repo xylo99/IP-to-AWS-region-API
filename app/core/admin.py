@@ -5,10 +5,10 @@ from core import models
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
-    list_display = ['email', 'name']
+    list_display = ['email', 'name', 'region']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal Info', {'fields': ('name',)}),
+        ('Personal Info', {'fields': ('name', 'region')}),
         (
             'Permissions',
             {
@@ -21,7 +21,7 @@ class UserAdmin(BaseUserAdmin):
 add_fieldsets = (
     (None, {
         'classes': ('wide',),
-        'fields': ('email', 'password1', 'password2')
+        'fields': ('email', 'password1', 'password2', 'region')
     }),
 )
 

@@ -11,5 +11,5 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, data):
-        """Create a new user with a password and return it"""
+        """Create a new user with encrypted password and return it"""
         return get_user_model().objects.create_user_with_ip_to_aws_region(**data)

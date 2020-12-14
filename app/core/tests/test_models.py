@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-
+import re
 
 class ModelTests(TestCase):
     def test_if_create_user_with_email_successful(self):
@@ -22,3 +22,11 @@ class ModelTests(TestCase):
 
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+
+    def test_if_ip_converted_to_region(self):
+        user = get_user_model().objects.create_user(
+            'tesit@test.com',
+            'pass33by234'
+        )
+
+        self.assertTrue(re.match(r"^[A-Z][A-Z]", user.region))
